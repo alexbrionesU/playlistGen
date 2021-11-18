@@ -1,0 +1,19 @@
+r = requests.get("https://music.apple.com/us/playlist/happy-vibes/pl.u-d2b05dYsLe30LRb")
+appleMusic = bs(r.content)
+
+# print(appleMusic.prettify())
+raw_list_source = appleMusic.find_all("div", {"class": "songs-list-row__song-name"})
+#print(raw_list_source)
+
+def format(list_source):
+    x = 0
+    song_name = []
+    while x < len(list_source):
+        var = list_source[x]
+        song_name.append(var.contents)
+        x += 1
+    return song_name
+
+
+s = format(raw_list_source)
+print(s)
