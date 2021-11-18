@@ -1,3 +1,7 @@
+import requests
+from bs4 import BeautifulSoup as bs
+bs.features="html.parser"
+
 r = requests.get("https://music.apple.com/us/playlist/happy-vibes/pl.u-d2b05dYsLe30LRb")
 appleMusic = bs(r.content)
 
